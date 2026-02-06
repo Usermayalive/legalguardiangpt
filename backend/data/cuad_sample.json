@@ -1,0 +1,59 @@
+# backend/data/cuad_sample.json
+{
+  "Indemnification": [
+    "shall indemnify and hold harmless",
+    "agree to defend, indemnify and hold harmless",
+    "indemnification obligation",
+    "duty to indemnify",
+    "indemnify against any and all claims"
+  ],
+  "Jurisdiction": [
+    "jurisdiction of the courts",
+    "exclusive jurisdiction",
+    "governing law and jurisdiction",
+    "venue shall be",
+    "courts of competent jurisdiction"
+  ],
+  "Liability Cap": [
+    "limit of liability",
+    "maximum liability",
+    "cap on damages",
+    "aggregate liability",
+    "liability shall not exceed"
+  ],
+  "Arbitration": [
+    "binding arbitration",
+    "arbitration shall be",
+    "dispute resolution",
+    "arbitration agreement",
+    "settle by arbitration"
+  ],
+  "Termination": [
+    "terminate this agreement",
+    "termination for cause",
+    "right to terminate",
+    "termination notice",
+    "termination for convenience"
+  ],
+  "Confidentiality": [
+    "confidential information",
+    "non-disclosure",
+    "proprietary information",
+    "trade secrets",
+    "confidentiality obligations"
+  ],
+  "Disclaimer": [
+    "disclaimer of warranties",
+    "as is basis",
+    "no warranties",
+    "without warranty",
+    "disclaims all warranties"
+  ],
+  "Limitation of Liability": [
+    "not liable for",
+    "exclusion of liability",
+    "limited liability",
+    "no liability for",
+    "liability is limited"
+  ]
+}

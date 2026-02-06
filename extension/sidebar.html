@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>LegalGuardianGPT</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar-container">
+        <header class="sidebar-header">
+            <h1>⚖️ LegalGuardianGPT</h1>
+            <p class="subtitle">AI Legal Assistant with CUAD RAG</p>
+            <div class="connection-status" id="connectionStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" id="quickModeBtn" data-mode="quick">
+                <span class="mode-icon">⚡</span>
+                Quick Analysis
+            </button>
+            <button class="mode-btn" id="chatModeBtn" data-mode="chat">
+                <span class="mode-icon">💬</span>
+                CUAD Chat
+            </button>
+        </div>
+
+        <!-- Quick Analysis Mode -->
+        <div class="mode-content active" id="quickMode">
+            <div class="document-info">
+                <h3>📄 Current Page</h3>
+                <p id="pageTitle">Loading...</p>
+                <div class="text-stats">
+                    <span id="charCount">0 chars</span>
+                    <span id="wordCount">0 words</span>
+                </div>
+            </div>
+
+            <div class="analysis-options">
+                <h3>📋 Analysis Options</h3>
+                <button class="action-btn" id="summarizeBtn">
+                    <span class="btn-icon">📝</span>
+                    Summarize
+                </button>
+                <button class="action-btn" id="explainBtn">
+                    <span class="btn-icon">🔍</span>
+                    Explain
+                </button>
+                <button class="action-btn" id="simplifyBtn">
+                    <span class="btn-icon">✨</span>
+                    Simplify
+                </button>
+            </div>
+
+            <div class="analysis-results" id="analysisResults">
+                <h3>📊 Analysis Results</h3>
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing with CUAD RAG...</p>
+                </div>
+                <div class="results-content" id="resultsContent"></div>
+            </div>
+        </div>
+
+        <!-- CUAD Chat Mode -->
+        <div class="mode-content" id="chatMode">
+            <div class="chat-header">
+                <h3>💬 CUAD Legal Expert</h3>
+                <p class="chat-subtitle">Ask questions about this document. Answers reference actual legal clauses.</p>
+                <div class="chat-stats">
+                    <span id="cuadClausesCount">0 CUAD clauses loaded</span>
+                    <span id="similarityThreshold">Min similarity: 0.3</span>
+                </div>
+            </div>
+
+            <div class="chat-history" id="chatHistory">
+                <!-- Chat messages will appear here -->
+                <div class="welcome-message">
+                    <p>👋 I'm your CUAD legal assistant. I can:</p>
+                    <ul>
+                        <li>Answer questions about this document</li>
+                        <li>Reference similar legal clauses from CUAD</li>
+                        <li>Identify risks and suggest improvements</li>
+                        <li>Explain complex legal language</li>
+                    </ul>
+                    <p>Try asking: "What are the risks in this clause?" or "Explain this section in plain English."</p>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <textarea 
+                    id="chatInput" 
+                    placeholder="Ask a question about this legal document..."
+                    rows="3"></textarea>
+                <div class="chat-controls">
+                    <div class="chat-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="useCUAD" checked>
+                            Use CUAD references
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autoContext" checked>
+                            Include page context
+                        </label>
+                    </div>
+                    <button class="send-btn" id="sendChatBtn">
+                        <span class="send-icon">📤</span>
+                        Send
+                    </button>
+                </div>
+            </div>
+
+            <div class="cuad-context" id="cuadContext">
+                <h4>🔍 CUAD References</h4>
+                <div class="context-content" id="contextContent">
+                    <p class="empty-context">References will appear here when you ask a question.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="sidebar-footer">
+            <div class="footer-info">
+                <span class="version">v2.0</span>
+                <span class="api-status" id="apiStatus">CUAD: Connecting...</span>
+            </div>
+            <button class="settings-btn" id="settingsBtn">⚙️</button>
+        </footer>
+    </div>
+
+    <div class="settings-panel" id="settingsPanel">
+        <h3>Settings</h3>
+        <div class="setting-item">
+            <label for="apiUrl">CUAD API URL:</label>
+            <input type="text" id="apiUrl" value="http://localhost:8000">
+        </div>
+        <div class="setting-item">
+            <label for="openaiKey">OpenAI API Key:</label>
+            <input type="password" id="openaiKey" placeholder="sk-...">
+        </div>
+        <div class="setting-item">
+            <label for="similarity">Similarity Threshold:</label>
+            <input type="range" id="similarity" min="0.1" max="0.9" step="0.1" value="0.3">
+            <span id="similarityValue">0.3</span>
+        </div>
+        <div class="setting-actions">
+            <button class="save-btn" id="saveSettings">Save</button>
+            <button class="cancel-btn" id="closeSettings">Cancel</button>
+        </div>
+    </div>
+
+    <script src="sidebar.js"></script>
+</body>
+</html>

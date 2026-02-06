@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "LegalGuardianGPT Lite",
+  "version": "2.0",
+  "description": "Lightweight AI legal assistant with CUAD RAG",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "http://127.0.0.1:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["sidebar.html", "styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_title": "LegalGuardianGPT Lite",
+    "default_popup": "popup.html"
+  }
+}

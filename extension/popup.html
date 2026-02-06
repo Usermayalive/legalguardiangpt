@@ -1,0 +1,190 @@
+<!-- extension/popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 320px;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+        }
+        
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 18px;
+            color: #1f2937;
+        }
+        
+        .subtitle {
+            margin: 0;
+            color: #6b7280;
+            font-size: 12px;
+        }
+        
+        .status {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        
+        .status-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .status-label {
+            color: #4b5563;
+        }
+        
+        .status-value {
+            font-weight: 500;
+        }
+        
+        .status-value.connected {
+            color: #10b981;
+        }
+        
+        .status-value.disconnected {
+            color: #ef4444;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-1px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .analyze-btn {
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+        }
+        
+        .settings-btn {
+            background: #f8fafc;
+            color: #4b5563;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .stats {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .agent-count {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        
+        .tool-count {
+            background: #f0fdf4;
+            color: #15803d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">⚖️</div>
+        <div>
+            <h1>LegalGuardianGPT</h1>
+            <p class="subtitle">Protecting illiterate users</p>
+        </div>
+    </div>
+    
+    <div class="status">
+        <div class="status-item">
+            <span class="status-label">Backend Status:</span>
+            <span id="backendStatus" class="status-value">Checking...</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Agents Active:</span>
+            <span id="agentCount" class="status-value">0/6</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Page Analysis:</span>
+            <span id="pageStatus" class="status-value">Ready</span>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <button id="analyzePage" class="analyze-btn">
+            🔍 Analyze Current Page
+        </button>
+        <button id="openDashboard" class="settings-btn">
+            ⚙️ Open Dashboard
+        </button>
+    </div>
+    
+    <div class="stats">
+        <div>
+            <span class="agent-count" id="agentsLive">6 agents</span>
+            <span class="tool-count" id="toolsLive">3 tools</span>
+        </div>
+        <div id="lastScan">Never scanned</div>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
